@@ -1,0 +1,70 @@
+﻿<Window x:Class="KcsLife.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
+        xmlns:v="clr-namespace:KcsLife.Views"
+        xmlns:vm="clr-namespace:KcsLife.ViewModels"
+        Title="MainWindow" 
+        Height="530" Width="800"
+        MinHeight="530" MinWidth="800">
+    
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    
+    <i:Interaction.Triggers>
+    
+    	<!--Viewに特別な要件が存在しない限りは、トリガーやアクションの自作にこだわらず積極的にコードビハインドを使いましょう -->
+    	<!--Viewのコードビハインドは、基本的にView内で完結するロジックとViewModelからのイベントの受信(専用リスナを使用する)に限るとトラブルが少なくなります -->
+    	<!--Livet1.1からはコードビハインドでViewModelのイベントを受信するためのWeakEventLisnterサポートが追加されています --> 
+        
+        <!--WindowのContentRenderedイベントのタイミングでViewModelのInitializeメソッドが呼ばれます-->
+        <i:EventTrigger EventName="ContentRendered">
+            <l:LivetCallMethodAction MethodTarget="{Binding}" MethodName="Initialize"/>
+        </i:EventTrigger>
+
+        <!--Windowが閉じたタイミングでViewModelのDisposeメソッドが呼ばれます-->
+        <i:EventTrigger EventName="Closed">
+            <l:DataContextDisposeAction/>
+        </i:EventTrigger>
+
+        <!--WindowのCloseキャンセル処理に対応する場合は、WindowCloseCancelBehaviorの使用を検討してください-->
+
+    </i:Interaction.Triggers>
+    <DockPanel LastChildFill="True">
+        <TabControl DockPanel.Dock="Bottom" Height="200"
+                    Margin="0,3">
+            <TabItem Header="ログ">
+                <DataGrid AutoGenerateColumns="False"
+                          ItemsSource="{Binding LogInfos}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="日時" Width="100" Binding="{Binding Entity.LogDate}"/>
+                        <DataGridTextColumn Header="種類" Width="50" Binding="{Binding Entity.InfoType}"/>
+                        <DataGridTextColumn Header="メッセージ" Width="150*" Binding="{Binding Entity.Message}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="100*" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid Grid.Column="0">
+                <StackPanel Orientation="Vertical">
+                    <Button Margin="5" Content="自動">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <l:LivetCallMethodAction MethodName="StartAutoMissionRunner" MethodTarget="{Binding}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>
