@@ -35,3 +35,4 @@ Installer/*.wixobj
 Installer/*.wixpdb
 Installer/*.msi
 *.cab
+kcs_settings.conf

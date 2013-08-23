@@ -19,12 +19,14 @@ namespace KcsLife.Logic
 			var dict = new Dictionary<int, string>();
 
 			using (var sr = new StreamReader("kcs_ships.csv", Encoding.GetEncoding("shift_jis")))
-			using (var csv = new CsvReader(sr, false, ','))
+			using (var csv = new CsvReader(sr, true, ','))
 			{
+				string[] headers = csv.GetFieldHeaders();
+
 				while (csv.ReadNextRecord())
 				{
-					var id = Int32.Parse(csv[0]);
-					var shipname = csv[1];
+					var id = Int32.Parse(csv["No"]);
+					var shipname = csv["ShipName"];
 
 					dict.Add(id, shipname);
 				}
