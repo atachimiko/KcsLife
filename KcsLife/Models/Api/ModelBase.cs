@@ -10,11 +10,6 @@ namespace KcsLife.Models.Api
 {
 	public abstract class ModelBase : NotificationObject
 	{
-		/*
-		 * NotificationObjectはプロパティ変更通知の仕組みを実装したオブジェクトです。
-		 */
-
-
 		#region Result変更通知プロパティ
 		private int _Result;
 		[JsonProperty(PropertyName="api_result")]
@@ -31,8 +26,6 @@ namespace KcsLife.Models.Api
 			}
 		}
 		#endregion
-
-
 
 		#region ResultMessage変更通知プロパティ
 		private string _ResultMessage;
@@ -51,13 +44,11 @@ namespace KcsLife.Models.Api
 			}
 		}
 		#endregion
-
-
-
 	}
 
 	public abstract class ApiDataItemBase : NotificationObject
 	{
+		/*
 		#region MemberId変更通知プロパティ
 		private int _MemberId;
 		[JsonProperty(PropertyName = "api_member_id")]
@@ -74,27 +65,12 @@ namespace KcsLife.Models.Api
 			}
 		}
 		#endregion
+		*/
 
 
+		
 
-		#region Id変更通知プロパティ
-		private int _Id;
-		[JsonProperty(PropertyName = "api_id")]
-		public int Id
-		{
-			get
-			{ return _Id; }
-			set
-			{
-				if (_Id == value)
-					return;
-				_Id = value;
-				RaisePropertyChanged();
-			}
-		}
-		#endregion
-
-
+		/*
 		#region State変更通知プロパティ
 		private int _State;
 		[JsonProperty(PropertyName = "api_state")]
@@ -111,7 +87,9 @@ namespace KcsLife.Models.Api
 			}
 		}
 		#endregion
+		*/
 
+		/*
 		#region NameId変更通知プロパティ
 		private string _NameId;
 		[JsonProperty(PropertyName = "api_name_id")]
@@ -128,8 +106,9 @@ namespace KcsLife.Models.Api
 			}
 		}
 		#endregion
+		*/
 
-
+		/*
 		#region Name変更通知プロパティ
 		private string _Name;
 		[JsonProperty(PropertyName = "api_name")]
@@ -146,8 +125,9 @@ namespace KcsLife.Models.Api
 			}
 		}
 		#endregion
+		*/
 
-
+		/*
 		#region Mission変更通知プロパティ
 		private List<int> _Mission;
 		[JsonProperty(PropertyName = "api_mission")]
@@ -164,8 +144,8 @@ namespace KcsLife.Models.Api
 			}
 		}
 		#endregion
-
-
+		*/
+		/*
 		#region FlagShip変更通知プロパティ
 		private string _FlagShip;
 		[JsonProperty(PropertyName = "api_flagship")]
@@ -182,8 +162,8 @@ namespace KcsLife.Models.Api
 			}
 		}
 		#endregion
-
-
+		*/
+		/*
 		#region Ship変更通知プロパティ
 		private List<int> _Ship;
 		[JsonProperty(PropertyName = "api_ship")]
@@ -200,5 +180,6 @@ namespace KcsLife.Models.Api
 			}
 		}
 		#endregion
+		*/
 	}
 }

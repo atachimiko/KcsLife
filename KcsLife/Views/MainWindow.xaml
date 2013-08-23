@@ -40,30 +40,116 @@
                 <DataGrid AutoGenerateColumns="False"
                           ItemsSource="{Binding LogInfos}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="日時" Width="100" Binding="{Binding Entity.LogDate}"/>
-                        <DataGridTextColumn Header="種類" Width="50" Binding="{Binding Entity.InfoType}"/>
+                        <DataGridTextColumn Header="日時" Width="180" Binding="{Binding LogDateText}"/>
+                        <DataGridTextColumn Header="種類" Width="80" Binding="{Binding Entity.InfoType}"/>
                         <DataGridTextColumn Header="メッセージ" Width="150*" Binding="{Binding Entity.Message}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
         </TabControl>
-        
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200" />
                 <ColumnDefinition Width="100*" />
             </Grid.ColumnDefinitions>
-            
+
             <Grid Grid.Column="0">
                 <StackPanel Orientation="Vertical">
-                    <Button Margin="5" Content="自動">
+                    <Button Margin="5" Content="デッキ読み込み">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <l:LivetCallMethodAction MethodName="StartAutoMissionRunner" MethodTarget="{Binding}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
+
+                    <Button Margin="5" Content="開始">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <l:LivetCallMethodAction MethodName="BeginSequence" MethodTarget="{Binding}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+
+                    <Button Margin="5" Content="出撃">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <l:LivetCallMethodAction MethodName="DoButtleSequence" MethodTarget="{Binding}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+
+                    <Button Margin="5" Content="補給">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <l:LivetCallMethodAction MethodName="ChargeSequence" MethodTarget="{Binding}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                 </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TabControl >
+                    <TabItem Header="艦船一覧">
+                        <DataGrid ItemsSource="{Binding Ships}"
+                                  IsReadOnly="True"
+                                  AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ShipID" Binding="{Binding Entity.ShipId}" />
+                                <DataGridTextColumn Header="ID" Binding="{Binding Entity.Id}" />
+                                <DataGridTextColumn Header="艦船名" Binding="{Binding ShipName}" />
+                                <DataGridTextColumn Header="レベル" Binding="{Binding Entity.Lv}" />
+                                <DataGridTextColumn Header="Cond" Binding="{Binding Entity.Cond}" />
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="艦隊一覧">
+                        <TabControl>
+                            <TabItem Header="第一艦隊">
+                                <DataGrid ItemsSource="{Binding Fleets[0].Ships}"
+                                          IsReadOnly="True"
+                                          AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="艦船名" Binding="{Binding ShipName}" />
+                                        <DataGridTextColumn Header="HP" Binding="{Binding HpText}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </TabItem>
+                            <TabItem Header="第二艦隊">
+                                <DataGrid ItemsSource="{Binding Fleets[1].Ships}"
+                                          IsReadOnly="True"
+                                          AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="艦船名" Binding="{Binding ShipName}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </TabItem>
+                            <TabItem Header="第三艦隊">
+                                <StackPanel Orientation="Vertical">
+                                    <DataGrid ItemsSource="{Binding Fleets[2].Ships}"
+                                          IsReadOnly="True"
+                                          AutoGenerateColumns="False">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="艦船名" Binding="{Binding ShipName}" />
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <TextBlock Text="{Binding Fleets[2].MissionText}" Height="30" />
+                                </StackPanel>
+                            </TabItem>
+                            <TabItem Header="第四艦隊">
+                                <DataGrid ItemsSource="{Binding Fleets[3].Ships}"
+                                          IsReadOnly="True"
+                                          AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="艦船名" Binding="{Binding ShipName}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </TabItem>
+                        </TabControl>
+                    </TabItem>
+                </TabControl>
             </Grid>
         </Grid>
     </DockPanel>

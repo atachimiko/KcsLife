@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace KcsLife.Models.Api
 {
-	public class LoginCheckDataActionLogData : ModelBase
+	public class ActionLogData : ModelBase
 	{
 
 		#region Data変更通知プロパティ

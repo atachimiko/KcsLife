@@ -29,7 +29,22 @@ namespace KcsLife.Models.Api
 
 	public class ShipData : ApiDataItemBase
 	{
-		// api_idは所有艦テーブルのID
+		#region Id変更通知プロパティ
+		private int _Id;
+		[JsonProperty(PropertyName = "api_id")]
+		public int Id
+		{
+			get
+			{ return _Id; }
+			set
+			{
+				if (_Id == value)
+					return;
+				_Id = value;
+				RaisePropertyChanged();
+			}
+		}
+		#endregion
 
 		#region Sortno変更通知プロパティ
 		private int _Sortno;
@@ -360,6 +375,9 @@ namespace KcsLife.Models.Api
 
 		#region Karyoku変更通知プロパティ
 		private List<int> _Karyoku;
+		/// <summary>
+		/// キャラクターパラメータ「火力」
+		/// </summary>
 		[JsonProperty(PropertyName = "api_karyoku")]
 		public List<int> Karyoku
 		{
@@ -378,6 +396,9 @@ namespace KcsLife.Models.Api
 
 		#region Raisou変更通知プロパティ
 		private List<int> _Raisou;
+		/// <summary>
+		/// キャラクターパラメータ「雷装」
+		/// </summary>
 		[JsonProperty(PropertyName = "api_raisou")]
 		public List<int> Raisou
 		{
@@ -396,6 +417,9 @@ namespace KcsLife.Models.Api
 
 		#region Taiku変更通知プロパティ
 		private List<int> _Taiku;
+		/// <summary>
+		/// キャラクターパラメータ「対空」
+		/// </summary>
 		[JsonProperty(PropertyName = "api_taiku")]
 		public List<int> Taiku
 		{
@@ -414,6 +438,9 @@ namespace KcsLife.Models.Api
 
 		#region Soukou変更通知プロパティ
 		private List<int> _Soukou;
+		/// <summary>
+		/// キャラクターパラメータ「装甲」
+		/// </summary>
 		[JsonProperty(PropertyName = "api_soukou")]
 		public List<int> Soukou
 		{
@@ -432,6 +459,9 @@ namespace KcsLife.Models.Api
 
 		#region Kaihi変更通知プロパティ
 		private List<int> _Kaihi;
+		/// <summary>
+		/// キャラクターパラメータ「回避」
+		/// </summary>
 		[JsonProperty(PropertyName = "api_kaihi")]
 		public List<int> Kaihi
 		{
@@ -450,6 +480,9 @@ namespace KcsLife.Models.Api
 
 		#region Taisen変更通知プロパティ
 		private List<int> _Taisen;
+		/// <summary>
+		/// キャラクターパラメータ「対潜」
+		/// </summary>
 		[JsonProperty(PropertyName = "api_taisen")]
 		public List<int> Taisen
 		{
@@ -468,6 +501,9 @@ namespace KcsLife.Models.Api
 
 		#region Sakuteki変更通知プロパティ
 		private List<int> _Sakuteki;
+		/// <summary>
+		/// キャラクターパラメータ「索敵」
+		/// </summary>
 		[JsonProperty(PropertyName = "api_sakuteki")]
 		public List<int> Sakuteki
 		{
@@ -486,6 +522,9 @@ namespace KcsLife.Models.Api
 
 		#region Lucky変更通知プロパティ
 		private List<int> _Lucky;
+		/// <summary>
+		/// キャラクターパラメータ「運」
+		/// </summary>
 		[JsonProperty(PropertyName = "api_lucky")]
 		public List<int> Lucky
 		{
@@ -504,6 +543,9 @@ namespace KcsLife.Models.Api
 
 		#region Locked変更通知プロパティ
 		private int _Locked;
+		/// <summary>
+		/// 艦船ロックフラグ
+		/// </summary>
 		[JsonProperty(PropertyName = "api_locked")]
 		public int Locked
 		{

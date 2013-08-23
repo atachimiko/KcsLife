@@ -10,9 +10,9 @@ namespace KcsLife.Models.Api
 	public class NdockData : ModelBase
 	{
 		#region Data変更通知プロパティ
-		private MyData _Data;
+		private List<MyData> _Data;
 		[JsonProperty(PropertyName = "api_data")]
-		public MyData Data
+		public List<MyData> Data
 		{
 			get
 			{ return _Data; }
@@ -28,7 +28,7 @@ namespace KcsLife.Models.Api
 
 		public class MyData : ApiDataItemBase
 		{
-
+			
 			#region ShipId変更通知プロパティ
 			private int _ShipId;
 			[JsonProperty(PropertyName = "api_ship_id")]
@@ -48,9 +48,9 @@ namespace KcsLife.Models.Api
 
 
 			#region CompleteTime変更通知プロパティ
-			private int _CompleteTime;
+			private long _CompleteTime;
 			[JsonProperty(PropertyName = "api_complete_time")]
-			public int CompleteTime
+			public long CompleteTime
 			{
 				get
 				{ return _CompleteTime; }
@@ -84,9 +84,9 @@ namespace KcsLife.Models.Api
 
 
 			#region Item1変更通知プロパティ
-			private int _Item1;
+			private long _Item1;
 			[JsonProperty(PropertyName = "api_item1")]
-			public int Item1
+			public long Item1
 			{
 				get
 				{ return _Item1; }
@@ -101,9 +101,9 @@ namespace KcsLife.Models.Api
 			#endregion
 
 			#region Item2変更通知プロパティ
-			private int _Item2;
+			private long _Item2;
 			[JsonProperty(PropertyName = "api_item2")]
-			public int Item2
+			public long Item2
 			{
 				get
 				{ return _Item2; }
@@ -118,9 +118,9 @@ namespace KcsLife.Models.Api
 			#endregion
 
 			#region Item3変更通知プロパティ
-			private int _Item3;
+			private long _Item3;
 			[JsonProperty(PropertyName = "api_item3")]
-			public int Item3
+			public long Item3
 			{
 				get
 				{ return _Item3; }
@@ -135,9 +135,9 @@ namespace KcsLife.Models.Api
 			#endregion
 
 			#region Item4変更通知プロパティ
-			private int _Item4;
+			private long _Item4;
 			[JsonProperty(PropertyName = "api_item4")]
-			public int Item4
+			public long Item4
 			{
 				get
 				{ return _Item4; }

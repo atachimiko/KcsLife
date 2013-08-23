@@ -392,9 +392,9 @@ namespace KcsLife.Models.Api
 			{
 
 				#region Level変更通知プロパティ
-				private int _Level;
+				private string _Level;
 				[JsonProperty(PropertyName = "api_level")]
-				public int Level
+				public string Level
 				{
 					get
 					{ return _Level; }

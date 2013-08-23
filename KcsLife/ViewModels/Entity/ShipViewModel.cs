@@ -57,7 +57,7 @@ namespace KcsLife.ViewModels.Entity
 		#endregion
 
 
-		#region ShipName変更通知プロパティ
+		#region ShipNameプロパティ
 		/// <summary>
 		/// 艦船名を取得します
 		/// </summary>
@@ -78,6 +78,26 @@ namespace KcsLife.ViewModels.Entity
 		}
 		#endregion
 
+		#region RateHpプロパティ
+		public string RateHp
+		{
+			get
+			{
+				var a = ((float)this.Entity.NowHp / (float)this.Entity.MaxHp) * 100.0;
+				return string.Format("{0:0.#} %",a);
+			}
+		}
+		#endregion
+
+		#region HpTextプロパティ
+		public string HpText
+		{
+			get
+			{
+				return string.Format("{0} / {1} ({2})", this.Entity.NowHp, this.Entity.MaxHp, RateHp);
+			}
+		}
+		#endregion
 
 		#endregion
 

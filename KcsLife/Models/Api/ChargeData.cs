@@ -13,9 +13,9 @@ namespace KcsLife.Models.Api
 	public class ChargeData : ModelBase
 	{
 		#region Data変更通知プロパティ
-		private List<MyData> _Data;
+		private MyData _Data;
 		[JsonProperty(PropertyName = "api_data")]
-		public List<MyData> Data
+		public MyData Data
 		{
 			get
 			{ return _Data; }

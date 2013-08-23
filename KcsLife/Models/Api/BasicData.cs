@@ -10,9 +10,9 @@ namespace KcsLife.Models.Api
 	public class BasicData : ModelBase
 	{
 		#region Data変更通知プロパティ
-		private List<MyData> _Data;
+		private MyData _Data;
 		[JsonProperty(PropertyName = "api_data")]
-		public List<MyData> Data
+		public MyData Data
 		{
 			get
 			{ return _Data; }
@@ -28,7 +28,7 @@ namespace KcsLife.Models.Api
 
 		public class MyData : ApiDataItemBase
 		{
-
+			/*
 			#region Nickname変更通知プロパティ
 			private string _Nickname;
 			[JsonProperty(PropertyName = "api_nickname")]
@@ -480,7 +480,6 @@ namespace KcsLife.Models.Api
 			#endregion
 
 
-
 			#region PtLose変更通知プロパティ
 			private int _PtLose;
 			[JsonProperty(PropertyName = "api_pt_lose")]
@@ -587,7 +586,7 @@ namespace KcsLife.Models.Api
 				}
 			}
 			#endregion
-
+			*/
 		}
 	}
 }

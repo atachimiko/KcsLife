@@ -30,9 +30,9 @@ namespace KcsLife.Models.Api
 		{
 
 			#region Mission変更通知プロパティ
-			private List<int> _Mission;
+			private List<long> _Mission;
 			[JsonProperty(PropertyName = "api_mission")]
-			public List<int> Mission
+			public List<long> Mission
 			{
 				get
 				{ return _Mission; }
